@@ -48,18 +48,18 @@ stats"></a></div></noscript>
 
 <!-- JavaScript for the test itself -->
 <script>
-    var max_econ, max_dipl, max_govt, max_scty; // Max possible scores
-    max_econ = max_dipl = max_govt = max_scty = 0;
-    var econ, dipl, govt, scty; // User's scores
-    econ = dipl = govt = scty = 0;
+    var max_edgy, max_norm, max_dank, max_whol; // Max possible scores
+    max_edgy = max_norm = max_dank = max_whol = 0;
+    var edgy, norm, dank, whol; // User's scores
+    edgy = norm = dank = whol = 0;
     var qn = 0; // Question number
     var prev_answer = null;
     init_question();
     for (var i = 0; i < questions.length; i++) {
-        max_econ += Math.abs(questions[i].effect.econ)
-        max_dipl += Math.abs(questions[i].effect.dipl)
-        max_govt += Math.abs(questions[i].effect.govt)
-        max_scty += Math.abs(questions[i].effect.scty)
+        max_edgy += Math.abs(questions[i].effect.edgy)
+        max_norm += Math.abs(questions[i].effect.norm)
+        max_dank += Math.abs(questions[i].effect.dank)
+        max_whol += Math.abs(questions[i].effect.whol)
     }
     function init_question() {
         document.getElementById("question-text").innerHTML = questions[qn].question;
@@ -75,10 +75,10 @@ stats"></a></div></noscript>
     }
 
     function next_question(mult) {
-        econ += mult*questions[qn].effect.econ
-        dipl += mult*questions[qn].effect.dipl
-        govt += mult*questions[qn].effect.govt
-        scty += mult*questions[qn].effect.scty
+        edgy += mult*questions[qn].effect.edgy
+        norm += mult*questions[qn].effect.norm
+        dank += mult*questions[qn].effect.dank
+        whol += mult*questions[qn].effect.whol
         qn++;
         prev_answer = mult;
         if (qn < questions.length) {
@@ -92,10 +92,10 @@ stats"></a></div></noscript>
             return;
         }
         qn--;
-        econ -= prev_answer * questions[qn].effect.econ;
-        dipl -= prev_answer * questions[qn].effect.dipl;
-        govt -= prev_answer * questions[qn].effect.govt;
-        scty -= prev_answer * questions[qn].effect.scty;
+        edgy -= prev_answer * questions[qn].effect.edgy;
+        norm -= prev_answer * questions[qn].effect.norm;
+        dank -= prev_answer * questions[qn].effect.dank;
+        whol -= prev_answer * questions[qn].effect.whol;
         prev_answer = null;
         init_question();
 
@@ -105,10 +105,10 @@ stats"></a></div></noscript>
     }
     function results() {
         location.href = `results.html`
-            + `?e=${calc_score(econ,max_econ)}`
-            + `&d=${calc_score(dipl,max_dipl)}`
-            + `&g=${calc_score(govt,max_govt)}`
-            + `&s=${calc_score(scty,max_scty)}`
+            + `?e=${calc_score(edgy,max_edgy)}`
+            + `&d=${calc_score(norm,max_norm)}`
+            + `&g=${calc_score(dank,max_dank)}`
+            + `&s=${calc_score(whol,max_whol)}`
     }
 </script>
 </body>
