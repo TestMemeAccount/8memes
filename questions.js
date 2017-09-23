@@ -1,11 +1,10 @@
 questions = [
     {
-        "question": "Oppression by corporations is more of a concern than oppression by governments.",
+        "question": "Memes about events such as the Holocaust, 9/11 and school shootings are okay",
         "effect": {
-            "econ": 10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 0
+            "edgy": 10,
+            "dank": 0,
+            "iron": 0,
         }
     },
     {
